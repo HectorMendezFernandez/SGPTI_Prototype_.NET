@@ -2,8 +2,11 @@
 using Prototype_SGPT.Models;
 using System.Diagnostics;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace Prototype_SGPT.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -11,7 +11,9 @@ insert into usuarios (pk_id, nombre, apellido, telefono, email, contrasena)
 values(123, 'Cristina', 'Aguilar', '88449910', 'cris@gmail.com', 'cris123');
 
 insert into usuarios (pk_id, nombre, apellido, telefono, email, contrasena)
-values(123, 'Francisco', 'Mendoza', '78652610', 'fran@gmail.com', 'fran123');
+values(321, 'Francisco', 'Mendoza', '78652610', 'fran@gmail.com', 'fran123');
 
 insert into usuarios (pk_id, nombre, apellido, telefono, email, contrasena)
-values(123, 'Tomyy', 'Herrera', '60249910', 'tommy@gmail.com', 'tommy123');
+values(312, 'Tomyy', 'Herrera', '60249910', 'tommy@gmail.com', 'tommy123');
+
+select pk_id,nombre,apellido,telefono,email,contrasena from usuarios where nombre= 'Cristina' and contrasena='cris123';

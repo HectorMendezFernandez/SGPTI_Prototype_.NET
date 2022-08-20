@@ -8,21 +8,21 @@ namespace Prototype_SGPT.Logic{
     public class LogicDbApplication
     {
 
-        public User EncontrarUsuario(string name, string clave)
+        public User EncontrarUsuario(string email, string clave)
         {
             User objeto = null;
 
             using(SqlConnection conexion = new SqlConnection("Data source=(local) ; Initial Catalog=SGPT_Prototype; Integrated Security=true"))
             {
                 //creamos un query que buscara a un usuario
-                string query = "select pk_id,nombre,apellido,telefono,email,contrasena from usuarios where nombre= @pname and contrasena=@pclave";
+                string query = "select pk_id,nombre,apellido,telefono,email,contrasena from usuarios where email= @pemail and contrasena=@pclave";
                 
                 //creamos un sqlCommand que se encargara de todo el trabajo de ejecucion para sql
                 //en este caso ejecutara el query creado
                 SqlCommand cmd = new SqlCommand(query, conexion);
 
                 //mandamos los parametros correspondietes al query que recibimos por el metodo
-                cmd.Parameters.AddWithValue("pname", name);
+                cmd.Parameters.AddWithValue("pemail", email);
                 cmd.Parameters.AddWithValue("pclave", clave);
 
                 //le decimos al comando que se ejecute (de modo de texto)
