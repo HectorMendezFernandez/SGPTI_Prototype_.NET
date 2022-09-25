@@ -20,10 +20,10 @@ namespace Prototype_SGPT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string email, string password)
+        public async Task<IActionResult> Index(string userName, string id)
         {
             //busca al usuario en la base de datos
-            User usuario = new LogicDbApplication().EncontrarUsuario(email, password);
+            User usuario = new LogicDbApplication().EncontrarUsuario(userName, id);
             if (usuario != null)
             {
                 //creamos una cookie y todo su esquema de autorizacion para el usuario
@@ -34,7 +34,8 @@ namespace Prototype_SGPT.Controllers
                 {
                     new Claim(ClaimTypes.Name, usuario.name),
                     new Claim(ClaimTypes.Email, usuario.email),
-                    new Claim("lastName", usuario.lastName)
+                    new Claim("lastName", usuario.lastName),
+                    new Claim("telefono", usuario.phoneNumber)
                 };
 
                 var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

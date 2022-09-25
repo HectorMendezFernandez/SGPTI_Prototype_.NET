@@ -8,22 +8,23 @@ namespace Prototype_SGPT.Logic{
     public class LogicDbApplication
     {
 
-        public User EncontrarUsuario(string email, string clave)
+        //metodo que verificara que el nombre de usuario y el id coincida con los datos de la base de datos
+        public User EncontrarUsuario(string userName, string id)
         {
             User objeto = null;
 
             using(SqlConnection conexion = new SqlConnection("Data source=(local) ; Initial Catalog=SGPT_Prototype; Integrated Security=true"))
             {
                 //creamos un query que buscara a un usuario
-                string query = "select pk_id,nombre,apellido,telefono,email,contrasena from usuarios where email= @pemail and contrasena=@pclave";
+                string query = "select pk_id,nombre,apellido,telefono,email,contrasena,userName from usuarios where userName=@puserName and pk_id=@pid";
                 
                 //creamos un sqlCommand que se encargara de todo el trabajo de ejecucion para sql
                 //en este caso ejecutara el query creado
                 SqlCommand cmd = new SqlCommand(query, conexion);
 
                 //mandamos los parametros correspondietes al query que recibimos por el metodo
-                cmd.Parameters.AddWithValue("pemail", email);
-                cmd.Parameters.AddWithValue("pclave", clave);
+                cmd.Parameters.AddWithValue("puserName", userName);
+                cmd.Parameters.AddWithValue("pid", id);
 
                 //le decimos al comando que se ejecute (de modo de texto)
                 cmd.CommandType = CommandType.Text;
@@ -43,8 +44,9 @@ namespace Prototype_SGPT.Logic{
                             lastName = dr["apellido"].ToString(),
                             phoneNumber = dr["telefono"].ToString(),
                             email = dr["email"].ToString(),
-                            id = int.Parse(dr["pk_id"].ToString()),
-                            password = dr["contrasena"].ToString()
+                            id = dr["pk_id"].ToString(),
+                            password = dr["contrasena"].ToString(),
+                            userName = dr["userName"].ToString()
                         };
                     }
                 }

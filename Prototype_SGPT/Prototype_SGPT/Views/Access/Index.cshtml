@@ -30,21 +30,22 @@
                                     <div class="text-center">
                                         <img src="https://www.tse.go.cr/visita-guiada/assets/img/Logo%20TSEb.png"
                                              style="width: 185px;" alt="logo">
-                                        <h4 class="mt-1 mb-5 pb-1">SGPTI</h4>
+                                        <h4 class="mt-1 mb-4 pb-1">SGPTI</h4>
                                     </div>
                                       @*Colocamos el controlador y la acion que queremos que se active (en este caso la accion index con http post)*@
                                     <form asp-controller="Access" asp-action="Index" method="post">
-                                        <p>Please login to your account</p>
+                                        <h5 class="m-2 p-3">Please login to your account</h5>
 
                                         <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example11">User Name</label>
                                             <input type="text" id="form2Example11" class="form-control"
-                                                   placeholder="Phone number or email address" asp-for="email" required/>
-                                            <label class="form-label" for="form2Example11">email</label>
+                                                   placeholder="nombre de usuario" asp-for="userName" required/>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="form2Example22" class="form-control" asp-for="password" required/>
-                                            <label class="form-label" for="form2Example22">Password</label>
+                                             <label class="form-label" for="form2Example22">Identificacion</label>
+                                            <input type="password" id="form2Example22" class="form-control" 
+                                             placeholder="identificacion" asp-for="id" required/>
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
@@ -52,14 +53,14 @@
                                                 Log
                                                 in
                                             </button>
-                                            <a class="text-muted" href="#!">Forgot password?</a>
+                                            @*<a class="text-muted" href="#!">Forgot password?</a>*@
                                         </div>
 
-                                        <div class="d-flex align-items-center justify-content-center pb-4">
+@*                                        <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">Don't have an account?</p>
                                             <button type="button" class="btn btn-outline-danger">Create new</button>
                                         </div>
-
+*@
                                     </form>
 
                                 </div>
